@@ -17,10 +17,10 @@ def clean_data(data):
 
     for col in num_cols:
         median_val = data[col].median()
-        data[col].fillna(median_val, inplace=True)
+        data[col] = data[col].fillna(median_val)
 
     for col in cat_cols:
         freq_val = data[col].mode()[0]
-        data[col].fillna(freq_val, inplace=True)
+        data[col] = data[col].fillna(freq_val)
 
     return data
