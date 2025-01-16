@@ -7,7 +7,7 @@ def load_data(path):
 def clean_data(data):
     """Nettoie les données en supprimant les colonnes inutiles et en gérant les valeurs manquantes."""
     # Suppression des colonnes inutiles
-    data.drop(['Name', 'Ticket', 'Cabin', 'PassengerId'], axis=1, inplace=True)
+    data.drop(['Name', 'Ticket', 'Cabin', 'PassengerId'], axis=1)
 
     # Gestion des valeurs manquantes
     num_cols = data.select_dtypes(include=[float, int]).columns
@@ -15,10 +15,10 @@ def clean_data(data):
 
     for col in num_cols:
         median_val = data[col].median()
-        data[col].fillna(median_val, inplace=True)
+        data[col].fillna(median_val)
 
     for col in cat_cols:
         freq_val = data[col].mode()[0]
-        data[col].fillna(freq_val, inplace=True)
+        data[col].fillna(freq_val)
 
     return data

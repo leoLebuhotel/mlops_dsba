@@ -9,7 +9,7 @@ def train_models(preprocessor, X_train, y_train):
     models = {
         "Logistic Regression": LogisticRegression(max_iter=1000),
         "Random Forest": RandomForestClassifier(),
-        "XGBoost": XGBClassifier(use_label_encoder=False, eval_metric='logloss')
+        "XGBoost": XGBClassifier(eval_metric='logloss')
     }
     
     results = {}
@@ -18,6 +18,6 @@ def train_models(preprocessor, X_train, y_train):
             ('preprocessor', preprocessor),
             ('classifier', model)
         ])
-        scores = cross_val_score(pipe, X_train, y_train, cv=5, scoring='accuracy')
+        scores = cross_val_score(pipe, X_train, y_train, cv=5, scoring='roc_auc')
         results[name] = scores.mean()
     return results
