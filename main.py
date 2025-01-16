@@ -15,7 +15,7 @@ def main():
     X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=0.25, random_state=0)
 
     # Prétraitement
-    numeric_features = ['Age', 'SibSp', 'Parch', 'Fare', 'Pclass']
+    numeric_features = ['Age', 'SibSp', 'Parch', 'Pclass', 'Fare']
     categorical_features = ['Sex', 'Embarked', 'Cabin']
     X_train_processed, X_valid_processed, preprocessor = preprocess_data(
         X_train, X_valid, numeric_features, categorical_features
