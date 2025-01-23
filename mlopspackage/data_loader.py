@@ -6,7 +6,11 @@ def load_data(path):
     return pd.read_csv(path)
 
 def clean_data(data):
-    """Nettoie les données en supprimant les colonnes inutiles et en gérant les valeurs manquantes."""
+    """
+       Nettoie les données en supprimant les colonnes inutiles et en gérant les valeurs manquantes.
+       data: input file par l'utilisateur
+    
+    """
     # Suppression des colonnes inutiles
     data.drop(['Name', 'Ticket', 'PassengerId'], axis=1, inplace=True)
     data["Cabin"] = data["Cabin"].apply(lambda s : s[0] if pd.notnull(s) else np.nan)
